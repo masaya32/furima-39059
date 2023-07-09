@@ -33,7 +33,7 @@ has_many :purchases
 
 ### Association
 belongs_to :user
-has_many :purchases
+has_one :purchase
 
 ## purchases テーブル
 
@@ -47,7 +47,7 @@ belongs_to :user
 belongs_to :item
 has_one :shipping
 
-## shipping テーブル
+## shippings テーブル
 
 | Column             | Type       | Options                       |
 | ------------------ | ------     | -----------                   |
