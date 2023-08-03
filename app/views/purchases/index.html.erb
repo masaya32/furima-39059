@@ -7,7 +7,7 @@
     </h1>
     <%# 購入内容の表示 %>
     <div class='buy-item-info'>
-      <%= image_tag "item-sample.png", class: 'buy-item-img' %>
+      <%= image_tag @item.image.variant(resize: '500x500'), class: 'buy-item-img' %>
       <div class='buy-item-right-content'>
         <h2 class='buy-item-text'>
           <%= @item.name %>
@@ -31,8 +31,8 @@
     </div>
     <%# /支払額の表示 %>
 
-    <%= form_with model: @purchase_shippings, url: item_purchases_path, id: 'charge-form', local: true do |f| %>
-    <%= render 'shared/error_messages', model: @purchase_shippings %>
+    <%= form_with model: @purchase_rooms, url: item_purchases_path, id: 'charge-form', local: true do |f| %>
+    <%= render 'shared/error_messages', model: @purchase_rooms %>
     <%# カード情報の入力 %>
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>

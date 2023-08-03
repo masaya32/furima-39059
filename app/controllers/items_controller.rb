@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :set_item, only: [:edit, :update, :show, :destroy]
+  before_action :prevent_url, only: [:edit, :update, :destroy]
+
 
   def index
     @items = Item.includes(:user).order("created_at DESC")
@@ -49,8 +51,13 @@ class ItemsController < ApplicationController
   end
 
   def set_item
-    @item = Item.find_by(params[:id])
+    @item = Item.find(params[:id])
   end
 
+  def prevent_url
+    if @item.user_id == current_user.id || @item.purchase != nil 
+      redirect_to root_path
+    end
+  end
 
 end
