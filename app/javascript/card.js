@@ -1,5 +1,5 @@
 const pay = () => {
-  const payjp = Payjp('pk_test_a30bbe4a55d854e1a4f74494')
+  const payjp = Payjp(process.env.PAYJP_PUBLIC_KEY);
   const elements = payjp.elements();
   const numberElement = elements.create('cardNumber');
   const expiryElement = elements.create('cardExpiry');
@@ -18,7 +18,6 @@ const pay = () => {
         const token = response.id;
         const renderDom = document.getElementById("charge-form");
         const tokenObj = `<input value=${token} type="hidden" name='token'>`;
-        console.log(renderDom);
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
       }
       numberElement.clear();

@@ -21,6 +21,8 @@ class PurchasesController < ApplicationController
     end
   end
 
+  private
+
   def purchase_params
     params.require(:purchase_rooms).permit(:post_code, :prefecture_id, :municipalities, :address, :building_name, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id],token: params[:token])
   end
@@ -32,7 +34,7 @@ class PurchasesController < ApplicationController
   
 
   def pay_item
-    Payjp.api_key = "sk_test_838fd4b9ae9301716b634e9a"
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: @item.price,
       card: purchase_params[:token],
