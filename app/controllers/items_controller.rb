@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :set_item, only: [:edit, :update, :show, :destroy]
-  before_action :prevent_url, only: [:edit, :update, :destroy]
+  before_action :prevent_url, only: [:edit,:update, :destroy]
 
 
   def index
@@ -55,7 +55,7 @@ class ItemsController < ApplicationController
   end
 
   def prevent_url
-    if @item.user_id == current_user.id || @item.purchase != nil 
+    if @item.user_id != current_user.id || @item.purchase != nil 
       redirect_to root_path
     end
   end
