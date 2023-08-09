@@ -88,7 +88,10 @@
 .click-upload>p {
   margin-bottom: 15px;
 }
-
+.preview-size{
+  height: 150px;
+  width: auto;
+}
 /* /商品画像 */
 
 /* 商品名と商品説明 */
