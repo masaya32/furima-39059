@@ -184,6 +184,19 @@
   margin: 10px 5px 0 0;
 }
 
+.comment{
+  display: flex;
+}
+
+.comment p{
+   margin: 0;
+}
+
+.user-info{
+  color: gray;
+  font-weight: bold;
+}
+
 .links {
   display: flex;
   justify-content: space-between;
