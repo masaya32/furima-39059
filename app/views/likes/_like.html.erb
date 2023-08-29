@@ -1,0 +1,5 @@
+<% if user_signed_in? && item.liked_by?(current_user)%>
+   <%= link_to "いいね済", item_likes_path(item.id), method: :delete, remote: true %>
+<% else %>
+    <%= link_to "いいねする", item_likes_path(item.id), method: :post, remote: true %>
+<% end %>

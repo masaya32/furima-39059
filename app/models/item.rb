@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   has_one :purchase
   has_many_attached :images
   has_many :comments
+  has_many :likes
 
   belongs_to :category
   belongs_to :condition
@@ -29,4 +30,7 @@ class Item < ApplicationRecord
   validates :prefecture_id, numericality: { other_than: 1 } 
   validates :shipping_date_id, numericality: { other_than: 1 } 
 
+  def liked_by?(user)
+    likes.where(user_id: user.id).exists?
+  end
 end
